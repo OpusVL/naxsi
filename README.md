@@ -4,7 +4,9 @@
 
 This container set provides a custom built Nginx with NAXSI Web Application Firewall module.
 
-Originally I built this from the ground up using `alpine:311` I got it running, but then ran into a problem when I wanted to shrink the image using a multi-stage build approach. Using a single build stage I ended up with a docker image size of 406MB. After rethinking and rebuilding using `nginx:alpine` I was able to get a multi-stage build and the image size shrank to a more palatable 128MB.
+See [https://github.com/nbs-system/naxsi](https://github.com/nbs-system/naxsi)
+
+Originally I built this from the ground up using `alpine:3.11` I got it running, but then ran into a problem when I wanted to shrink the image using a multi-stage build approach. Using a single build stage I ended up with a docker image size of 406MB. After rethinking and rebuilding using `nginx:alpine` I was able to get a multi-stage build and the image size shrank to a more palatable 128MB.
 
 The problem with using `nginx:alpine` is that it does not support python2. The NAXSI version available for download requires python2 to build.
 
@@ -36,4 +38,4 @@ To trigger it to prove this you can use an SQL injection attack in your URL, eg.
 
 ## Usage
 
-Replace the `default.conf` file by mounting you own on top of it.
+Replace the `default.conf` file by mounting your own on top of it.
