@@ -28,7 +28,7 @@ RUN wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && \
     mkdir -p /usr/src && \
     tar -zxC /usr/src -f nginx-${NGINX_VERSION}.tar.gz
 
-COPY naxsi-1.3 /usr/src/naxsi-1.3
+COPY naxsi-${NAXSI_VERSION} /usr/src/naxsi-${NAXSI_VERSION}
 
 #     ./configure --with-cc-opt="-Wno-error" \
 # RUN cd /usr/local/nginx-${NGINX_VERSION}/ && \
