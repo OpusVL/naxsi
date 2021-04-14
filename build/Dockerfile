@@ -1,9 +1,11 @@
 FROM nginx:alpine AS builder
 
-LABEL maintainer="Paul Bargewell <paul.bargewell@opusvl.com>"
+LABEL maintainer="Paul Bargewell <paul.bargewell@opusvl.com>" \
+    copyright="Copyright 2021, Opus Vision Limited T/A OpusVL" \
+    SPDX-License-Identifier="AGPL-3.0-or-later"
 
 ENV NAXSI_VERSION=1.3
-ENV GEO_DB_RELEASE=2021-02
+ENV GEO_DB_RELEASE=2021-04
 
 RUN apk add --no-cache --virtual .build-deps \
     gcc \
@@ -42,9 +44,11 @@ RUN cd /usr/src/naxsi-${NAXSI_VERSION} && \
 
 FROM nginx:alpine
 
-LABEL maintainer="Paul Bargewell <paul.bargewell@opusvl.com>"
+LABEL maintainer="Paul Bargewell <paul.bargewell@opusvl.com>" \
+    copyright="Copyright 2021, Opus Vision Limited T/A OpusVL" \
+    SPDX-License-Identifier="AGPL-3.0-or-later"
 
-ENV GEO_DB_RELEASE=2021-02
+ENV GEO_DB_RELEASE=2021-04
 
 COPY --from=builder  /usr/local/nginx/modules/ngx_http_naxsi_module.so /usr/local/nginx/modules/ngx_http_naxsi_module.so
 COPY --from=builder /etc/nginx/naxsi_core.rules /etc/nginx/naxsi_core.rules
